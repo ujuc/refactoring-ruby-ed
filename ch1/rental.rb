@@ -9,7 +9,7 @@ class Rental
     @days_rented = days_rented
   end
 
-  def change
+  def charge
     # 영화 종류별 내용을 각각 구함
     result = 0
 
