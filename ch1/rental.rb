@@ -1,4 +1,4 @@
-require '../ch1/movie'
+require 'movie'
 
 # 영화를 대여중인 고객을 나타낸다
 class Rental

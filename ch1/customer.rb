@@ -1,5 +1,5 @@
-require '../ch1/movie'
-require '../ch1/rental'
+require 'movie'
+require 'rental'
 
 # 비디오 대여점 고객
 class Customer
