@@ -19,12 +19,26 @@ class Customer
 
     @rentals.each do |element|
       # 이번 대여의 계산 결과를 표시
-      result += "\t" + element.movie.title + "\t" + element.change.to_s + "\n"
+      result += "\t" + element.movie.title + "\t" + element.charge.to_s + "\n"
     end
 
     # 푸터 행 추가
     result += "대여료는 #{total_charge}입니다.\n"
-    result += "적립 포인트는 #{frequent_renter_points} 입니다."
+    result += "적립 포인트는 #{total_frequent_renter_points} 입니다."
+    result
+  end
+
+  def html_statement
+    result = "<h1>Rentals for <em>#{@name}</em></h1></p>\n"
+
+    @rentals.each do |element|
+      # 이번 대여의 계산 결과 표시
+      result += "\t" + each.movie.title + ": " + element.charge.to_s + "<br>\n"
+    end
+
+    # 푸터 행 추가
+    result += "<p>대여료는 <em>#{total_charge}</em>입니다.<p>\n"
+    result += "적립 포인트는 " + "<em>#{total_frequent_renter_points}</em> " + "입니다.<p>"
     result
   end
 
@@ -34,7 +48,7 @@ class Customer
     @rentals.inject(0) { |sum, rental| sum + rental.charge }
   end
 
-  def frequent_renter_points
+  def total_frequent_renter_points
     @rentals.inject(0) { |sum, rental| sum + rental.frequent_renter_points }
   end
 end
