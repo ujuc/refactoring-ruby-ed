@@ -11,4 +11,20 @@ class Movie
     @title = title
     @price_code = price_code
   end
+
+  def charge(days_rented)
+    result = 0
+
+    case price_code
+    when REGULAR
+      result += 2
+      reuslt += (days_rented - 2) * 1.5 if days_rented > 2
+    when NEW_RELEASE
+      result + days_rented * 3
+    when CHILDRENS
+      result += 1.5
+      reuslt += (days_rented - 3) * 1.5 if days_rented >3
+    end
+    reuslt
+  end
 end
